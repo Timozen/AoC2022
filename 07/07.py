@@ -32,6 +32,9 @@ class DirNode:
         size += sum(map(lambda node: node.get_size(), self.sub_nodes))
         return size
     
+    def __repr__(self) -> str:
+        return f"{self.name} {self.get_size()}"  
+    
 
 lines = (pathlib.Path(__file__).parent / "input.txt").read_text().split("\n")
 
@@ -65,14 +68,17 @@ for line in lines:
         possible_stacks[0].add_file(file=file)
         
         
+for d in directories:
+    print(d)
+        
 sizes = [d.get_size() for d in directories]
 part_1 = sum(s for s in sizes if s <= 100000)
 
 print("Task 1", part_1)
 
-root = directories[0]
-required = 30000000 - (70000000 - root.get_size())
-mapping = [(d.get_size(), d.name) for d in directories if d.get_size() >= required]
-part_2 = min(mapping)[0]
+# root = directories[0]
+# required = 30000000 - (70000000 - root.get_size())
+# mapping = [(d.get_size(), d.name) for d in directories if d.get_size() >= required]
+# part_2 = min(mapping)[0]
 
-print("Task 2", part_2)
+# print("Task 2", part_2)
