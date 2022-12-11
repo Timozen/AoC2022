@@ -90,7 +90,8 @@ def worry_game(lines, rounds, high_worry):
     monkas: list[Monka] = []
     for block in lines:
         monkas.append(Monka.new(text_block=block, high_worry=high_worry))
-        
+    
+    # 猴子 :^)
     worry_operator = 1
     for monka in monkas:
         worry_operator *= monka.divider
