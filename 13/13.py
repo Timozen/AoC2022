@@ -1,7 +1,7 @@
 import pathlib
 from typing import Union
 
-def compare(left: Union[list,int], right: Union[list,int]) -> int:    
+def compare_elements(left: Union[list,int], right: Union[list,int]) -> int:    
     if isinstance(left, int) and isinstance(right, int):
         if left == right:
             return 0
@@ -29,7 +29,7 @@ def compare_lists(left: list, right:list) -> int:
         return -1
     
     for l, r in zip(left, right):
-        result = compare(l, r)
+        result = compare_elements(l, r)
         # just for clearity
         if result == 0:
             continue
