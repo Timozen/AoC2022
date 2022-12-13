@@ -64,11 +64,7 @@ print("Task 1", sum(correct_pairs))
 from functools import cmp_to_key
 lines = pathlib.Path(file_name).read_text().split("\n")
 
-connected_lines = []
-for line in lines:
-    if line.strip():
-        connected_lines.append(eval(line))
-        
+connected_lines = [eval(line) for line in lines if line.strip()]
 connected_lines.append([[2]])
 connected_lines.append([[6]])
 connected_lines = sorted(connected_lines, key=cmp_to_key(compare_lists), reverse=True)
