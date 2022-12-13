@@ -23,10 +23,10 @@ def compare_elements(left: Union[list,int], right: Union[list,int]) -> int:
             return compare_lists(left=left, right=[right])
 
 def compare_lists(left: list, right:list) -> int:
-    if len(left) == 0 and len(right) != 0:
-        return 1
-    if len(left) != 0 and len(right) == 0:
-        return -1
+    # if len(left) == 0 and len(right) != 0:
+    #     return 1
+    # if len(left) != 0 and len(right) == 0:
+    #     return -1
     
     for l, r in zip(left, right):
         result = compare_elements(l, r)
