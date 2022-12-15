@@ -22,28 +22,17 @@ def compare_elements(left: Union[list,int], right: Union[list,int]) -> int:
         else:
             return compare_lists(left=left, right=[right])
 
-def compare_lists(left: list, right:list) -> int:
-    # if len(left) == 0 and len(right) != 0:
-    #     return 1
-    # if len(left) != 0 and len(right) == 0:
-    #     return -1
-    
+def compare_lists(left: list, right:list) -> int:  
     for l, r in zip(left, right):
         result = compare_elements(l, r)
         # just for clearity
-        if result == 0:
-            continue
-        
-        # in case RIGHT or WRONG
-        return result
-    
+        if result != 0:
+            return result    
     # if we end because left is smaller then this is a RIGHT case!
     if len(left) < len(right):
         return 1
     elif len(left) > len(right):
         return -1
-
-    # could be problematic!
     return 0
 
 
