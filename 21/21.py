@@ -77,7 +77,7 @@ def get_or_create_node(name: str, node_dict: dict) -> Node:
         node_dict[name] = node
         return node
 
-lines = pathlib.Path('input.txt').read_text().splitlines()
+lines = pathlib.Path('task3.txt').read_text().splitlines()
 
 node_dict: dict[str, Node] = {}
 
@@ -114,4 +114,17 @@ else:
 X = sympy.symbols("X")
 humn_equation = sympy.simplify(humn_equation)
 print("Task 2 Prep:", to_equal_value, "=", humn_equation)
-print("Task 2:", sympy.solve(sympy.sympify(humn_equation) - to_equal_value, X)[0])
+solutions = sympy.solve(sympy.sympify(humn_equation) - to_equal_value, X)
+print("Task 2:", solutions[0])
+
+# Task 3: multiply all possible results from task 2
+# https://www.reddit.com/r/adventofcode/comments/zrdfb0/2022_day_21_part_3/
+
+l_side = root.left_child().equation(replace_humn=True)
+r_side = root.right_child().equation(replace_humn=True)
+equation = sympy.simplify(l_side + " - " + r_side)
+solutions = sympy.solve(equation, X)
+result = 1
+for solution in solutions:
+    result *= solution
+print("Task 3:", result, solutions)

@@ -130,3 +130,7 @@ dmypy.json
 
 api/
 vis.ipynb
+
+input.txt
+test.txt
+task3.txt
