@@ -27,13 +27,13 @@ class Node:
             return self.value
         else:
             if self.value == "+":
-                return self.left_child().solve() + self.right_child().solve()
+                return self.solve_left_subtree() + self.solve_right_subtree()
             elif self.value == "*":
-                return self.left_child().solve() * self.right_child().solve()
+                return self.solve_left_subtree() * self.solve_right_subtree()
             elif self.value == "-":
-                return self.left_child().solve() - self.right_child().solve()
+                return self.solve_left_subtree() - self.solve_right_subtree()
             elif self.value == "/":
-                return self.left_child().solve() // self.right_child().solve()
+                return self.solve_left_subtree() // self.solve_right_subtree()
             
     def equation(self, replace_humn: bool = True) -> str:
         if self.name == "humn" and replace_humn:
