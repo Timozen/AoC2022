@@ -62,7 +62,6 @@ def get_or_create(d: dict, key: tuple[int, int], default: list) -> list:
     return d[key]
 
 def diffuse(elves: set[tuple[int,int]], move_dirs: collections.deque[str]) -> bool:
-    elve_movements = {elve: elve for elve in elves}
     new_location = {}
     
     any_moved = False
@@ -79,15 +78,16 @@ def diffuse(elves: set[tuple[int,int]], move_dirs: collections.deque[str]) -> bo
                 get_or_create(new_location, loc, []).append(elve)
                 break
         
+    movable_elves = {}
     # second half of the round:
     # now the elves move simultaneously but if two elves want to move to the same location, they both stay in place
     for loc, elvs in new_location.items():
         if len(elvs) == 1:
             # only one elf wants to move to this location, so he moves
-            elve_movements[elvs[0]] = loc
-            
+            movable_elves[elvs[0]] = loc
+
     # update the existing set!
-    for elve, new_loc in elve_movements.items():
+    for elve, new_loc in movable_elves.items():
         if new_loc != elve:
             elves.remove(elve)
             elves.add(new_loc)        
