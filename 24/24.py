@@ -9,7 +9,7 @@ DIRS = [Dir(0, -1), Dir(0, 1), Dir(-1, 0), Dir(1, 0), Dir(0, 0)]
 def in_field(pos: Pos, src: Pos, width: int, height: int) -> bool:
     return (0 <= pos.x < width and 0 <= pos.y < height) or pos == src
 
-def rotate_and_check(hc, x1, x2, step):
+def rotate_and_check(hc: list[collections.deque[bool]], x1: int, x2: int, step: int) -> bool:
     hc[x1].rotate(step)
     val = hc[x1][x2]
     hc[x1].rotate(-step)
